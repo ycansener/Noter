@@ -76,7 +76,12 @@ namespace MSDosNote.Infrastructure.Data
         {
             DateTime operationTime = DateTime.Now;
             string prefix = operationTime.ToString("dd/MM/yyyy hh:mm");
-            return prefix + Environment.NewLine + content + Environment.NewLine;
+            return prefix + "\t" + content;
+        }
+
+        public string GetNotesFolder()
+        {
+            return _filePath;
         }
     }
 }

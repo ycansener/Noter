@@ -10,6 +10,8 @@ namespace MSDosNote.Domain.Constants
     {
         public const string OpenNotesFile = "-o";
         public const string OpenNotesFileInBrowser = "-ob";
+        public const string OpenNotesFolder = "-of";
+        public const string OpenNotesFolderInBrowser = "-ofb";
         public const string ClearNotesFile = "-cls";
         public const string OpenNewNotebook = "-new";
         public const string BackupNotesFile = "-bak";

@@ -13,5 +13,6 @@ namespace MSDosNote.Domain.Interfaces
         void BackupNotes();
         string GetNotes();
         void OpenNewNotebook();
+        string GetNotesFolder();
     }
 }

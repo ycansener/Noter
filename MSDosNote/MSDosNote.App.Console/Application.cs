@@ -21,16 +21,27 @@ namespace MSDosNote.App.Consolos
 
         public void Run(string[] args)
         {
-            AddToPath();
+            //AddToPath();
             if (args != null && args.Length > 0)
             {
                 string argument = args[0];
+                string folderPath = _repository.GetNotesFolder();
                 string path = _repository.GetNotes();
 
                 switch (argument)
                 {
                     case CustomArgument.OpenNotesFile:
-                        Process.Start(path);
+                        try
+                        {
+                            ProcessStartInfo startInfo = new ProcessStartInfo();
+                            startInfo.FileName = "code";
+                            startInfo.Arguments = path;
+                            Process.Start(startInfo);
+                        }
+                        catch (Exception e)
+                        {
+                            Process.Start(path);
+                        }
                         break;
                     case CustomArgument.OpenNotesFileInBrowser:
                         Process.Start("chrome.exe", path);
@@ -46,6 +57,12 @@ namespace MSDosNote.App.Consolos
                         break;
                     case CustomArgument.Help:
                         ShowHelpContent();
+                        break;
+                    case CustomArgument.OpenNotesFolder:
+                        Process.Start("explorer.exe", folderPath);
+                        break;
+                    case CustomArgument.OpenNotesFolderInBrowser:
+                        Process.Start("chrome.exe", folderPath);
                         break;
                     default:
                         if (argument.StartsWith("-"))
